@@ -1,54 +1,99 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 class Book {
- public:
-  string title;
-  float price;
-  int *stock;
-  Book() {
-    title = "Unknown";
-    price = 0.0;
-    stock = new int(30);
-  }
- 
-  void update(string abc){
-  title = abc;
-cout << "Changed title to " << abc << endl;
-  }
- 
-  void purchase(){
-  int quantity = -1;
+    public:
+        string title;
+        float price;
+        int *stock;
 
-if (*stock <= 5){
-cout << "Low On Stock. Less than 5 books remain" << endl;
-}
+        Book(){
+            title = "Unknown";
+            price = 0.0;
+            stock = new int(30);
+        }
+        
+        ~Book(){
+            delete stock;
+        }
 
-cout << "Enter quantity of books you'd like to purchase of title " << title <<  ": ";
-cin >> quantity;
+        void update(){
+            int ch = 0;
 
-if (quantity > *stock){
-cout << "Quantity asked for is more than stock available!" << endl;
-}
-else{
-*stock -= quantity;
-cout << "The remaining stock is now: " << *stock << endl;
-}
-  }
+            cout << "What do you wish to change?" << endl;
+            cout << "Press 1 for Title" << endl;
+            cout << "Press 2 for Price" << endl;
+            cout << "Press 3 for Stock" << endl;
+
+            cout << "Choose: ";
+            cin >> ch;
+
+            if (ch == 1){
+                cin.ignore();
+                cout << "Enter new Title: ";
+                getline(cin, title);
+
+                cout << "The Title was successfully updated!" << endl;
+            }
+            else if (ch == 2){
+                cout << "Enter new Price: ";
+                cin >> price;
+
+                cout << "The Price was successfully updated!" << endl;
+            }
+            else if (ch == 3){
+                int add;
+
+                cout << "Enter Number of books being added to the stock: ";
+                cin >> add;
+
+                while (add <= 0){
+                    cout << "Invalid Addition!" << endl;
+                    cout << "Enter Number of books being added to the stock: ";
+                    cin >> add;
+                }
+
+                (*stock) += add;
+
+                cout << "The Stock was successfully updated!" << endl;
+            }
+            else{
+                cout << "Invalid Choice!" << endl;
+            }
+        }
+
+        void control(){
+            int buy;
+
+            cout << "How many books do you wish to buy: ";
+            cin >> buy;
+
+            if (*stock - buy < 0){
+                cout << "The ask for buying is more than the available stock which is: " << *stock << endl; 
+            }
+            else if (*stock - buy < 5){
+                *stock -= buy;
+
+                cout << "Bought successfully!" << endl;
+
+                cout << "LOW STOCK WARNING" << endl;
+                cout << "The new remaining stock is: " << *stock << endl;
+            }
+            else{
+                cout << "Bought successfully!" << endl;
+                cout << "The new remaining stock is: " << *stock << endl;
+            }
+        }
+
 };
 
 int main(){
-Book b1;
-Book b2;
-
-b1.update("A Good Book");
-
-b1.purchase();
-
-b2.update("Bad Book");
-
-b2.purchase();
-
-b2.purchase();
+    Book book;
+    book.update();
+    book.update();
+    book.update();
+    book.control();
+    book.control();
 }
