@@ -82,6 +82,7 @@ class Book {
                 cout << "The new remaining stock is: " << *stock << endl;
             }
             else{
+                *stock -= buy;
                 cout << "Bought successfully!" << endl;
                 cout << "The new remaining stock is: " << *stock << endl;
             }
@@ -96,4 +97,4 @@ int main(){
     book.update();
     book.control();
     book.control();
-}
+}    
