@@ -9,3 +9,7 @@
 ![image](https://github.com/user-attachments/assets/4849db5f-013b-411f-940a-39cf1790be60)
 
 # Task 4:
+![image](https://github.com/user-attachments/assets/9696b399-4720-4aa7-9466-91a7526b6927)
+![image](https://github.com/user-attachments/assets/e247f4fc-94e9-441d-b4be-1d1656454cda)
+
+# Task 5:
