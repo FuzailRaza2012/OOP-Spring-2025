@@ -27,6 +27,6 @@ int main() {
 		cout << "Age is: " << age << endl;
 	}
 	catch(const InvalidValueException& e){
-		cout << "Error:" << e.what() << endl;
+		cerr << "Error:" << e.what() << endl;
 	}
 }
